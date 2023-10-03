@@ -25,14 +25,9 @@
 }
 
 body {
-    /*
-    background-image: url(./assets/assets/bg-mobile.jpg);
-    background-repeat: no-repeat;
-    background-position: top center;
-    background-size: cover;
-    */
 
     background: var(--bg-url) no-repeat top center/cover;
+    height: 100vh;
 }
 
 body * {
@@ -46,7 +41,6 @@ body * {
     margin: 56px auto 0px;
     padding: 0 24px;
 
-    /* padding-top: 56px; */
 }
 
 #profile {
@@ -85,11 +79,16 @@ body * {
     left: 0;
     z-index: 1;
     transform: translateY(-50%);
+
+    animation: slide-back 0.2s;
+}
+
+#switch button:hover {
+    outline: 8px solid var(--highlight-color);
 }
 
 .light #switch button {
-    right: 0;
-    left: initial;
+    animation: slide-in 0.4s forwards;
 }
 
 #switch span {
@@ -102,8 +101,6 @@ body * {
     -webkit-backdrop-filter: blur(4px);
     border-radius: 9999px;
 }
-
-/* links - lista */
 
 ul {
     list-style: none;
@@ -136,14 +133,12 @@ ul li a {
     transition: background .2s;
 }
 
-/*pseudo-selector */
 
 ul li a:hover {
     background: var(--surface-color-hover);
     border: 1.5px solid var(--text-color);
 }
 
-/* social links */
 
 #social-links {
 
@@ -177,3 +172,30 @@ footer {
     font-size: 14px;
 }
 
+@media (min-width: 700px) {
+    :root {
+        --bg-url: url(./assets/bg-desktop.jpg);
+    }
+
+    .light {
+        --bg-url: url(.assets/bg-desktop-light.jpg);
+    }
+}
+
+@keyframes slide-in {
+    from {
+        left: 0;
+    }
+    to {
+        left: 50%;
+    }
+}
+
+@keyframes slide-back {
+    from {
+        left: 50%;
+    }
+    to {
+        left: 0;
+    }
+}
